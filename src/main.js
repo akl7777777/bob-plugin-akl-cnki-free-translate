@@ -6,6 +6,32 @@ function supportLanguages() {
     return config.supportedLanguages.map(([standardLang]) => standardLang);
 }
 
+function getFilePath(fileName) {
+    return `$sandbox/${fileName}`;
+}
+
+function readFile(fileName) {
+    const filePath = getFilePath(fileName);
+
+    const exists = $file.exists(filePath);
+
+    if (!exists) {
+        return ''
+    }
+    return $file.read(filePath).toUTF8()
+}
+
+function writeFile(value, fileName) {
+    $file.write({
+        data: $data.fromUTF8(value),
+        path: getFilePath(fileName),
+    });
+}
+
+function deleteFile(fileName = historyFileName) {
+    $file.delete(getFilePath(fileName));
+}
+
 function encrypto(t) {
     const n = '95bae0e3871c9834'
     const key = CryptoJS.enc.Utf8.parse(n)
@@ -47,25 +73,34 @@ function translate(query, completion) {
                 "Token": ""
             }
             try {
-                // 获取token
-                const tokenResp = await $http.request({
-                    method: "GET",
-                    url: loginUrl,
-                    header: {
-                        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
-                    }
-                });
-                if (tokenResp.data && tokenResp.data.code === 200) {
-                    header.Token = tokenResp.data.data
-                } else {
-                    const errMsg = tokenResp.data ? '获取token异常==>' + JSON.stringify(tokenResp.data) : '未知错误'
-                    completion({
-                        error: {
-                            type: 'unknown',
-                            message: errMsg,
-                            addtion: errMsg,
-                        },
+                // 先读取缓存token 如果没有token则获取token
+                let token = readFile('token.txt')
+                if (token) {
+                    header.Token = token
+                }
+                if (!header.Token) {
+                    // 获取token
+                    const tokenResp = await $http.request({
+                        method: "GET",
+                        url: loginUrl,
+                        header: {
+                            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
+                        }
                     });
+                    if (tokenResp.data && tokenResp.data.code === 200) {
+                        header.Token = tokenResp.data.data
+                        // 写入缓存
+                        writeFile(tokenResp.data.data, 'token.txt')
+                    } else {
+                        const errMsg = tokenResp.data ? '获取token异常==>' + JSON.stringify(tokenResp.data) : '未知错误'
+                        completion({
+                            error: {
+                                type: 'unknown',
+                                message: errMsg,
+                                addtion: errMsg,
+                            },
+                        });
+                    }
                 }
                 // 翻译请求
                 const resp = await $http.request({
@@ -74,8 +109,6 @@ function translate(query, completion) {
                     header: header,
                     body: {"words": encryptedText, "translateType": null}
                 });
-                $log.error(JSON.stringify(resp))
-                $log.error(JSON.stringify(resp.data))
                 if (resp.data && resp.data.data && resp.data.data.mResult) {
                     completion({
                         result: {
@@ -85,6 +118,10 @@ function translate(query, completion) {
                         },
                     });
                 } else {
+                    if (resp.data && resp.data.code === 401) {
+                        // token失效
+                        deleteFile('token.txt')
+                    }
                     const errMsg = '翻译异常请求header==>' + JSON.stringify(header) + '翻译异常请求body参数==>' + JSON.stringify({
                         "words": encryptedText,
                         "translateType": null
