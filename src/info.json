@@ -1,0 +1,27 @@
+{
+    "identifier": "com.akl.bob-plugin-akl-cnki-free-translate",
+    "version": "0.0.1",
+    "category": "translate",
+    "name": "Free cnki",
+    "summary": "免秘钥免启动任何服务调用cnki",
+    "icon": "icon.png",
+    "author": "akl7777777 <akl7777777@163.com>",
+    "homepage": "https://github.com/akl7777777/bob-plugin-akl-cnki-free-translate",
+    "appcast": "https://raw.githubusercontent.com/akl7777777/bob-plugin-akl-cnki-free-translate/main/appcast.json",
+    "minBobVersion": "0.5.0",
+    "options": [
+        {
+            "identifier": "desc",
+            "type": "menu",
+            "title": "描述",
+            "defaultValue": "akl7777777",
+            "menuValues": [
+              {
+                "title": "免秘钥免启动任何服务调用cnki",
+                "value": "akl7777777"
+              }
+            ],
+            "desc":"免秘钥免启动任何服务调用cnki"
+        }
+    ]
+}
