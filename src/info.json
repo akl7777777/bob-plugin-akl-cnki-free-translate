@@ -1,8 +1,8 @@
 {
     "identifier": "com.akl.bob-plugin-akl-cnki-free-translate",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "category": "translate",
-    "name": "Free cnki",
+    "name": "Free CNKI学术翻译",
     "summary": "免秘钥免启动任何服务调用cnki",
     "icon": "icon.png",
     "author": "akl7777777 <akl7777777@163.com>",
@@ -17,11 +17,11 @@
             "defaultValue": "akl7777777",
             "menuValues": [
               {
-                "title": "免秘钥免启动任何服务调用cnki",
+                "title": "免秘钥免启动任何服务调用CNKI学术翻译",
                 "value": "akl7777777"
               }
             ],
-            "desc":"免秘钥免启动任何服务调用cnki"
+            "desc":"免秘钥免启动任何服务调用CNKI学术翻译"
         }
     ]
 }
