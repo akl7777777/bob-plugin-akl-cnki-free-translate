@@ -3,6 +3,8 @@
 
 CNKI学术翻译官网:https://dict.cnki.net/index#
 
+CNKI学术翻译是中国知网提供的一项服务，旨在为用户提供中英文互译的学术文献翻译服务。用户可以通过CNKI学术翻译将自己所需要的学术文献翻译成中文或英文，以便更好地阅读和理解学术文献的内容。该服务可以帮助用户提高学术研究的效率和质量，同时也方便了中英文学术交流。
+
 bob插件主要为bob用户开发,bob是一款macOS上的翻译软件,bob官网地址:https://bobtranslate.com/
 
 #### CNKI学术翻译免秘钥bob插件下载地址:[CNKI学术翻译插件(免秘钥)](https://github.com/akl7777777/bob-plugin-akl-cnki-free-translate/releases/download/v0.0.2/bob-plugin-akl-cnki-free-translate_v0.0.2.bobplugin)
