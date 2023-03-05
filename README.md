@@ -36,7 +36,7 @@ bob插件主要为bob用户开发,bob是一款macOS上的翻译软件,bob官网�
 
 使用截图如下
 
-<img width="588" alt="image" src="https://user-images.githubusercontent.com/84266551/220933928-52e72e71-8b05-47e8-81a4-323461f0e036.png">
+<img width="611" alt="image" src="https://user-images.githubusercontent.com/84266551/222952773-4bb88394-e9d1-494d-95bf-e1c64764141e.png">
 
 
 ### 开发不易,如果喜欢可以请作者喝一杯可乐,谢谢!
