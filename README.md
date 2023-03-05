@@ -1,6 +1,7 @@
 # bob-plugin-akl-cnki-free-translate
 无需apiKey;无需账号密码;免费无限次使用CNKI学术翻译,根据网页版JavaScript加密算法开发的bobplugin;所以只要官网的算法不改,理论上就可以无限使用
 
+CNKI学术翻译官网:https://dict.cnki.net/index#
 
 bob插件主要为bob用户开发,bob是一款macOS上的翻译软件,bob官网地址:https://bobtranslate.com/
 
