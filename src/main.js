@@ -110,11 +110,13 @@ function translate(query, completion) {
                     body: {"words": encryptedText, "translateType": null}
                 });
                 if (resp.data && resp.data.data && resp.data.data.mResult) {
+                    const regex = /\([^()]*智联招聘[^()]*\)/g;
+                    const result = resp.data.data.mResult.replace(regex, '');
                     completion({
                         result: {
                             from: utils.langMapReverse.get(source_lang),
                             to: utils.langMapReverse.get(target_lang),
-                            toParagraphs: resp.data.data.mResult.split('\n'),
+                            toParagraphs: result.split('\n'),
                         },
                     });
                 } else {

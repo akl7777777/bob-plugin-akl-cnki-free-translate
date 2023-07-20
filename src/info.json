@@ -1,6 +1,6 @@
 {
     "identifier": "com.akl.bob-plugin-akl-cnki-free-translate",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "category": "translate",
     "name": "Free CNKI学术翻译",
     "summary": "免秘钥免启动任何服务调用cnki",
