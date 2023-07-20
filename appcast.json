@@ -2,6 +2,13 @@
   "identifier": "com.akl.bob-plugin-akl-cnki-free-translate",
   "versions": [
     {
+      "version": "0.0.3",
+      "desc": "修复智联招聘广告问题",
+      "sha256": "a50f4fed602847adfe26f0f2232a1b258dc944f8e030b10f43137eccbef468c2",
+      "url": "https://github.com/akl7777777/bob-plugin-akl-cnki-free-translate/releases/download/v0.0.3/bob-plugin-akl-cnki-free-translate_v0.0.3.bobplugin",
+      "minBobVersion": "0.5.0"
+    },
+    {
       "version": "0.0.2",
       "desc": "增加token缓存,避免重复请求",
       "sha256": "7b14c2eda9af8ed5d2b5d4df7838f0c334978512cb611d222b29296b57e9f1fe",
